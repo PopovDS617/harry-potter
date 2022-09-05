@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CharacterState } from '@/models/data-models';
-import getAllCharacters from '@/store/characters/charactersService';
+import { CharacterState } from '../../models/data-models';
+import getAllCharacters from './charactersService';
 
 const initialState: CharacterState = {
   characters: [],

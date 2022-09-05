@@ -1,4 +1,4 @@
-export interface Character {
+export interface ICharacter {
   name: string;
   alternate_names?: [];
   species?: string;
@@ -20,7 +20,7 @@ export interface Character {
   image?: string;
 }
 
-export interface CharacterState {
+export interface ICharacterState {
   characters: Character[];
   isError: boolean;
   isSuccess: boolean;
@@ -28,7 +28,7 @@ export interface CharacterState {
   message: string | unknown;
 }
 
-export interface Potion {
+export interface IPotion {
   name: string;
   effect: string;
   sideEffects: string;

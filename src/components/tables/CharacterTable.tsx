@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { getCharacters } from '@/store/characters/charactersSlice';
-import { AppDispatch, RootState } from '@/store/store';
-import CharacterItem from '@/components/tables/CharacterItem';
+import { getCharacters } from '../../store/characters/charactersSlice';
+import { AppDispatch, RootState } from '../../store/store';
+import CharacterItem from '../../components/tables/CharacterItem';
 
 function CharacterTable() {
   const dispatch: AppDispatch = useDispatch();

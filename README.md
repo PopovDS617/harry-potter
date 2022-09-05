@@ -1,2 +1,3 @@
-harry potter project
-used two APIs
+### npm install
+
+### npm run dev

@@ -1,0 +1,294 @@
+@font-face {
+  font-family: 'Wizard World';
+  src: url('../../public//fonts/WizardWorldSimplified-Kxr7.ttf');
+}
+
+@font-face {
+  font-family: 'Harry Potter';
+  src: url('../../public//fonts//HARRYP__.TTF');
+}
+
+$gry-red: rgb(116, 0, 1);
+$gry-yellow: rgb(211, 166, 37);
+$huf-yellow: rgb(236, 185, 57);
+$huf-brown: rgb(55, 46, 41);
+$huf-black: rgb(0, 0, 0);
+$rav-blue: rgb(34, 47, 91);
+$rav-bronze: rgb(148, 107, 45);
+$sly-green: rgb(42, 98, 61);
+$sly-silver: rgb(170, 170, 170);
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+
+  a {
+    text-decoration: none;
+
+    &:visited {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}
+
+.homepage-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.homepage-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .homepage-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(3rem, 0.5rem + 10vh, 5rem);
+    font-family: 'Wizard World', sans-serif;
+    text-align: center;
+    opacity: 0;
+    animation: fadein 1.5s 4s linear forwards;
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+  .crests-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .homepage-crest {
+    z-index: 999;
+    margin: 1rem;
+    padding: 1rem;
+    transition: all 0.7s ease;
+    animation-play-state: running;
+
+    &:hover {
+      translate: 0 -25px;
+
+      cursor: pointer;
+    }
+  }
+
+  .homepage-crest-gryffindor {
+    @extend .homepage-crest;
+    scale: 0.6;
+    animation: move-crest-gryffindor 2s 0.5s linear forwards;
+    opacity: 0;
+
+    img {
+      &:hover {
+        filter: drop-shadow(0 0 5px rgb(255, 0, 0));
+      }
+    }
+  }
+  .homepage-crest-hufflepuff {
+    @extend .homepage-crest;
+    scale: 0.6;
+    animation: move-crest-hufflepuff 2s 1s linear forwards;
+    opacity: 0;
+    img {
+      &:hover {
+        filter: drop-shadow(0 0 5px rgb(234, 255, 0));
+      }
+    }
+  }
+  .homepage-crest-ravenclaw {
+    @extend .homepage-crest;
+    scale: 0.6;
+    opacity: 0;
+    animation: move-crest-ravenclaw 2s 1.5s linear forwards;
+
+    img {
+      &:hover {
+        animation-fill-mode: none;
+        filter: drop-shadow(0 0 5px rgb(0, 47, 255));
+        transition: all 1s ease !important;
+      }
+    }
+  }
+  .homepage-crest-slytherin {
+    @extend .homepage-crest;
+    opacity: 0;
+    animation: move-crest-slytherin 2s 2s linear forwards;
+    scale: 0.6;
+
+    img {
+      &:hover {
+        filter: drop-shadow(0 0 5px rgb(34, 255, 0));
+      }
+    }
+  }
+
+  @keyframes move-crest-gryffindor {
+    0% {
+      transform: translateX(-100%);
+
+      opacity: 0;
+    }
+
+    90% {
+      transform: translate(0, 0);
+      scale: 0.8;
+      opacity: 1;
+    }
+
+    100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+  @keyframes move-crest-hufflepuff {
+    0% {
+      transform: translateY(-100%);
+
+      opacity: 0;
+    }
+
+    90% {
+      transform: translate(0, 0);
+      scale: 0.8;
+      opacity: 1;
+    }
+
+    100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+  @keyframes move-crest-ravenclaw {
+    0% {
+      transform: translateY(100%);
+
+      opacity: 0;
+    }
+
+    90% {
+      transform: translate(0, 0);
+      scale: 0.8;
+      opacity: 1;
+    }
+
+    100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+  @keyframes move-crest-slytherin {
+    0% {
+      transform: translateX(100%);
+
+      opacity: 0;
+    }
+
+    90% {
+      transform: translate(0, 0);
+      scale: 0.9;
+      opacity: 1;
+    }
+
+    100% {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+}
+
+// end of homepage
+
+.welcome-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Wizard World', sans-serif;
+  font-size: 4rem;
+}
+
+.layout {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.layout-gryffindor {
+  @extend .layout;
+  background-color: $gry-red;
+  color: $gry-yellow;
+}
+.layout-hufflepuff {
+  @extend .layout;
+  background-color: $huf-yellow;
+  color: $huf-brown;
+}
+.layout-ravenclaw {
+  @extend .layout;
+  background-color: $rav-blue;
+  color: $rav-bronze;
+}
+.layout-slytherin {
+  @extend .layout;
+  background-color: $sly-green;
+  color: $sly-silver;
+}
+
+.header {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .header-text {
+    margin-top: 0;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    font-family: 'Harry Potter', sans-serif;
+    font-size: 4rem;
+    width: 45%;
+  }
+
+  .navbar {
+    margin-top: 0;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 55%;
+    padding: 1rem;
+    font-family: 'Wizard World', sans-serif;
+
+    a {
+      font-size: 2rem;
+      padding: 1rem;
+    }
+  }
+}

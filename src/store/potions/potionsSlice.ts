@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import getAllPotions from '@/store/potions/potionsService';
+import getAllPotions from './potionsService';
 
 const initialState = {
   potions: [],

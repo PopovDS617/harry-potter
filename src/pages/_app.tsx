@@ -1,11 +1,9 @@
 import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 
-import '@/styles/globals.css';
-// !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
-import '@/styles/colors.css';
+import '../styles/globals.scss';
 
-import { store } from '@/store/store';
+import { store } from '../store/store';
 
 /**
  * !STARTERCONF info

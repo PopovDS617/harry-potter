@@ -1,17 +1,20 @@
 import React from 'react';
+import Layout from '../components/layout/Layout';
 
-import CharacterTable from '@/components/tables/CharacterTable';
+import CharacterTable from '../components/tables/CharacterTable';
 
 const CharactersPage = () => {
   return (
-    <div>
+    <Layout>
       <div>
-        <h1>Characters</h1>
+        <div>
+          <h1>Characters</h1>
+        </div>
+        <div>
+          <CharacterTable />
+        </div>
       </div>
-      <div>
-        <CharacterTable />
-      </div>
-    </div>
+    </Layout>
   );
 };
 export default CharactersPage;
