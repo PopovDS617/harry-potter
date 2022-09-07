@@ -1,8 +1,8 @@
 import React from 'react';
-import { Character } from '../../models/data-models';
+import { ICharacter } from '../../models/data-models';
 
 interface Props {
-  item: Character;
+  item: ICharacter;
 }
 
 const CharacterItem = (props: Props) => {

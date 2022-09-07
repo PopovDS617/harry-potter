@@ -8,13 +8,27 @@
   src: url('../../public//fonts//HARRYP__.TTF');
 }
 
+@font-face {
+  font-family: 'Caslon';
+  src: url('../../public/fonts//caslonantique.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Regular';
+  src: url('../../public/fonts/proximanova_regular.ttf');
+}
+@font-face {
+  font-family: 'Proxima Nova Black';
+  src: url('../../public/fonts/proximanova_black.ttf');
+}
+
 $gry-red: rgb(116, 0, 1);
 $gry-yellow: rgb(211, 166, 37);
 $huf-yellow: rgb(236, 185, 57);
 $huf-brown: rgb(55, 46, 41);
 $huf-black: rgb(0, 0, 0);
 $rav-blue: rgb(34, 47, 91);
-$rav-bronze: rgb(148, 107, 45);
+$rav-bronze: rgb(216, 151, 53);
 $sly-green: rgb(42, 98, 61);
 $sly-silver: rgb(170, 170, 170);
 
@@ -24,7 +38,8 @@ body {
   margin: 0;
   box-sizing: border-box;
   height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
+  font-family: 'Proxima Nova Regular', sans-serif;
 
   a {
     text-decoration: none;
@@ -217,17 +232,6 @@ body {
 
 // end of homepage
 
-.welcome-container {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  font-family: 'Wizard World', sans-serif;
-  font-size: 4rem;
-}
-
 .layout {
   height: 100vh;
   width: 100%;
@@ -259,7 +263,7 @@ body {
 }
 
 .header {
-  height: 10vh;
+  height: 10%;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -290,5 +294,85 @@ body {
       font-size: 2rem;
       padding: 1rem;
     }
+  }
+}
+
+.page-content {
+  height: 90%;
+  width: 100%;
+}
+
+//end of layer
+.table-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.table-container-header {
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-container {
+  margin: 0 auto 1rem;
+  height: 50rem;
+  display: flex;
+  width: 90%;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.table-model {
+  padding: 1rem;
+  background-color: white;
+  color: black;
+  height: 100%;
+  display: block;
+  overflow: auto;
+
+  th {
+    position: sticky;
+    top: 0;
+  }
+}
+
+//end of table
+
+.welcome-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Wizard World', sans-serif;
+  font-size: 4rem;
+
+  .welcome-card-container {
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .welcome-card {
+      // width: 30%;
+      display: flex;
+      max-width: 30rem;
+      max-height: 50rem;
+      margin: 1rem;
+      padding: 1rem;
+      border: solid 5px black;
+    }
+  }
+
+  .welcome-goback-container {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

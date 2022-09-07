@@ -1,4 +1,5 @@
 export interface ICharacter {
+  id?: string;
   name: string;
   alternate_names?: [];
   species?: string;
@@ -21,7 +22,7 @@ export interface ICharacter {
 }
 
 export interface ICharacterState {
-  characters: Character[];
+  characters: ICharacter[];
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
@@ -29,6 +30,7 @@ export interface ICharacterState {
 }
 
 export interface IPotion {
+  id?: string;
   name: string;
   effect: string;
   sideEffects: string;
@@ -43,4 +45,15 @@ export interface IPotion {
     firstName: string;
     lastName: string;
   }[];
+}
+
+export interface ISpell {
+  id?: string;
+  name: string;
+  incantation?: string;
+  effect?: string;
+  canBeVerbal?: boolean;
+  type?: string;
+  light?: string;
+  creator?: null;
 }

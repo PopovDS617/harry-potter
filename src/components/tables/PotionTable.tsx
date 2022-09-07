@@ -5,17 +5,14 @@ import { getPotions } from '../../store/potions/potionsSlice';
 import { AppDispatch, RootState } from '../../store/store';
 
 import PotionItem from '../../components/tables/PotionItem';
+import LoadingSpinner from '../../ui/LoadingSpinner';
+import useTheme from '../../hooks/use-theme';
 
 function PotionTable() {
   const dispatch: AppDispatch = useDispatch();
-
+  const { spinnerColor } = useTheme();
   const { potions, isLoading } = useSelector(
     (state: RootState) => state.potion
-  );
-  const loadingText = (
-    <tr>
-      <td colSpan={7}>Loading ...</td>
-    </tr>
   );
 
   useEffect(() => {
@@ -26,22 +23,26 @@ function PotionTable() {
   });
   console.log(potionsList);
 
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Effect</th>
-          <th>Side Effects</th>
-          <th>Characteristics </th>
-          <th>Difficulty </th>
-          <th>Ingredients </th>
-          <th>Inventors </th>
-        </tr>
-      </thead>
-      <tbody>{isLoading ? loadingText : potionsList}</tbody>
-    </table>
-  );
+  if (isLoading) {
+    return <LoadingSpinner color={spinnerColor} />;
+  } else {
+    return (
+      <table className="table-model">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Effect</th>
+
+            <th>Characteristics </th>
+            <th>Difficulty </th>
+            <th>Ingredients </th>
+            {/* <th>Inventors </th> */}
+          </tr>
+        </thead>
+        <tbody>{potionsList}</tbody>
+      </table>
+    );
+  }
 }
 
 export default PotionTable;
