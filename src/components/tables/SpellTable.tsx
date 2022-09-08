@@ -9,7 +9,7 @@ import useTheme from '../../hooks/use-theme';
 const SpellTable = () => {
   const dispatch: AppDispatch = useDispatch();
   const { isLoading, spells } = useSelector((state: RootState) => state.spell);
-  const { spinnerColor } = useTheme();
+  const { spinnerColor, tHeadTheme, tableTheme } = useTheme();
 
   useEffect(() => {
     dispatch(getSpells());
@@ -22,18 +22,18 @@ const SpellTable = () => {
     return <LoadingSpinner color={spinnerColor} />;
   } else {
     return (
-      <div>
-        <div>
-          <div>
-            <div>Name</div>
-            <div>Incantation</div>
-            <div>Effect</div>
-            <div>Type</div>
-            <div>Light</div>
-          </div>
-        </div>
-        <div>{spellsList}</div>
-      </div>
+      <table className={tableTheme}>
+        <thead className={tHeadTheme}>
+          <tr>
+            <th>Name</th>
+            <th>Incantation</th>
+            <th>Effect</th>
+            <th>Type</th>
+            <th>Light</th>
+          </tr>
+        </thead>
+        <tbody>{spellsList}</tbody>
+      </table>
     );
   }
 };

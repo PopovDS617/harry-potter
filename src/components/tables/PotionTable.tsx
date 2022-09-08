@@ -10,7 +10,7 @@ import useTheme from '../../hooks/use-theme';
 
 function PotionTable() {
   const dispatch: AppDispatch = useDispatch();
-  const { spinnerColor } = useTheme();
+  const { spinnerColor, tHeadTheme, tableTheme } = useTheme();
   const { potions, isLoading } = useSelector(
     (state: RootState) => state.potion
   );
@@ -27,8 +27,8 @@ function PotionTable() {
     return <LoadingSpinner color={spinnerColor} />;
   } else {
     return (
-      <table className="table-model">
-        <thead>
+      <table className={tableTheme}>
+        <thead className={tHeadTheme}>
           <tr>
             <th>Name</th>
             <th>Effect</th>
@@ -36,7 +36,6 @@ function PotionTable() {
             <th>Characteristics </th>
             <th>Difficulty </th>
             <th>Ingredients </th>
-            {/* <th>Inventors </th> */}
           </tr>
         </thead>
         <tbody>{potionsList}</tbody>

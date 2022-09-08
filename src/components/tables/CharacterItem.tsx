@@ -1,5 +1,6 @@
 import React from 'react';
 import { ICharacter } from '../../models/data-models';
+import { dateConverter } from '../../utils/date-converter';
 
 interface Props {
   item: ICharacter;
@@ -12,7 +13,7 @@ const CharacterItem = (props: Props) => {
     <tr>
       <td>{name}</td>
       <td>{house}</td>
-      <td>{dateOfBirth}</td>
+      <td>{dateOfBirth ? dateConverter(dateOfBirth) : ''}</td>
       <td>{ancestry} </td>
       <td>{patronus} </td>
       <td>{alive ? '' : 'dead'}</td>

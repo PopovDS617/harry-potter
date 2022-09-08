@@ -8,10 +8,11 @@ import useTheme from '../../hooks/use-theme';
 
 function CharacterTable() {
   const dispatch: AppDispatch = useDispatch();
-  const { spinnerColor } = useTheme();
+  const { spinnerColor, tHeadTheme, tableTheme } = useTheme();
   const { characters, isLoading } = useSelector(
     (state: RootState) => state.character
   );
+  console.log(characters);
 
   useEffect(() => {
     dispatch(getCharacters());
@@ -24,15 +25,15 @@ function CharacterTable() {
     return <LoadingSpinner color={spinnerColor} />;
   } else {
     return (
-      <table className="table-model">
-        <thead>
+      <table className={tableTheme}>
+        <thead className={tHeadTheme}>
           <tr>
             <th>Name</th>
-            <th>House</th>
-            <th>Date of birth</th>
-            <th>House </th>
-            <th>Patronus </th>
-            <th>Status </th>
+            <th className="tr-character-house">House</th>
+            <th className="tr-character-dob">Date of birth</th>
+            <th className="tr-character-ancestry">Ancestry </th>
+            <th className="tr-character-patronus">Patronus </th>
+            <th className="tr-character-status">Status </th>
           </tr>
         </thead>
         <tbody>{charactersList}</tbody>

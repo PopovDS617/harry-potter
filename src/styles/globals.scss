@@ -24,13 +24,16 @@
 
 $gry-red: rgb(116, 0, 1);
 $gry-yellow: rgb(211, 166, 37);
+$gry-text: rgb(244, 190, 43);
 $huf-yellow: rgb(236, 185, 57);
-$huf-brown: rgb(55, 46, 41);
+$huf-brown: rgb(35, 29, 26);
 $huf-black: rgb(0, 0, 0);
 $rav-blue: rgb(34, 47, 91);
 $rav-bronze: rgb(216, 151, 53);
+$rav-text: rgb(255, 187, 85);
 $sly-green: rgb(42, 98, 61);
-$sly-silver: rgb(170, 170, 170);
+$sly-silver: rgb(211, 211, 211);
+$sly-text: rgb(225, 223, 223);
 
 html,
 body {
@@ -38,8 +41,23 @@ body {
   margin: 0;
   box-sizing: border-box;
   height: 100vh;
-  // overflow: hidden;
+  overflow: hidden;
   font-family: 'Proxima Nova Regular', sans-serif;
+  scrollbar-gutter: auto;
+
+  ::-webkit-scrollbar {
+    width: 2rem;
+    padding: 2rem;
+    margin: 2rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+  }
 
   a {
     text-decoration: none;
@@ -75,7 +93,7 @@ body {
     font-family: 'Wizard World', sans-serif;
     text-align: center;
     opacity: 0;
-    animation: fadein 1.5s 4s linear forwards;
+    animation: fadein 1.5s 2.5s linear forwards;
 
     @keyframes fadein {
       from {
@@ -109,7 +127,7 @@ body {
   .homepage-crest-gryffindor {
     @extend .homepage-crest;
     scale: 0.6;
-    animation: move-crest-gryffindor 2s 0.5s linear forwards;
+    animation: move-crest-gryffindor 1.5s 0.3s linear forwards;
     opacity: 0;
 
     img {
@@ -121,7 +139,7 @@ body {
   .homepage-crest-hufflepuff {
     @extend .homepage-crest;
     scale: 0.6;
-    animation: move-crest-hufflepuff 2s 1s linear forwards;
+    animation: move-crest-hufflepuff 1.5s 0.6s linear forwards;
     opacity: 0;
     img {
       &:hover {
@@ -133,7 +151,7 @@ body {
     @extend .homepage-crest;
     scale: 0.6;
     opacity: 0;
-    animation: move-crest-ravenclaw 2s 1.5s linear forwards;
+    animation: move-crest-ravenclaw 1.5s 0.9s linear forwards;
 
     img {
       &:hover {
@@ -146,7 +164,7 @@ body {
   .homepage-crest-slytherin {
     @extend .homepage-crest;
     opacity: 0;
-    animation: move-crest-slytherin 2s 2s linear forwards;
+    animation: move-crest-slytherin 1.5s 1.2s linear forwards;
     scale: 0.6;
 
     img {
@@ -245,21 +263,62 @@ body {
   @extend .layout;
   background-color: $gry-red;
   color: $gry-yellow;
+  ::-webkit-scrollbar-track {
+    background-color: $gry-red;
+    border: solid 2px $gry-yellow;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $gry-yellow;
+    &:hover {
+      background-color: yellow;
+    }
+  }
 }
 .layout-hufflepuff {
   @extend .layout;
   background-color: $huf-yellow;
   color: $huf-brown;
+
+  ::-webkit-scrollbar-track {
+    background-color: $huf-yellow;
+    border: solid 2px $huf-brown;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $huf-brown;
+    &:hover {
+      background-color: $huf-black;
+    }
+  }
 }
 .layout-ravenclaw {
   @extend .layout;
   background-color: $rav-blue;
   color: $rav-bronze;
+  ::-webkit-scrollbar-track {
+    background-color: $rav-blue;
+    border: solid 2px $rav-bronze;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $rav-bronze;
+    &:hover {
+      background-color: $rav-text;
+    }
+  }
 }
 .layout-slytherin {
   @extend .layout;
   background-color: $sly-green;
   color: $sly-silver;
+  ::-webkit-scrollbar-track {
+    background-color: $sly-green;
+    border: solid 2px $sly-silver;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $sly-silver;
+    &:hover {
+      background-color: white;
+    }
+  }
 }
 
 .header {
@@ -302,7 +361,81 @@ body {
   width: 100%;
 }
 
-//end of layer
+//end of layout
+
+.welcome-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Wizard World', sans-serif;
+  font-size: 4rem;
+
+  .welcome-card-container {
+    width: 100%;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    .welcome-card {
+      display: flex;
+      flex-direction: column;
+      max-height: 35rem;
+      margin: 2rem 2rem 1rem 1rem;
+      background-color: $gry-yellow;
+      border: solid 5px $gry-yellow;
+      border-radius: 20px;
+      color: $gry-red;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    img {
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .welcome-card-text {
+      padding: 0.5rem 1rem;
+    }
+
+    .card-gryffindor {
+      @extend .welcome-card;
+      background-color: $gry-yellow;
+      border: solid 5px $gry-yellow;
+      color: $gry-red;
+    }
+    .card-hufflepuff {
+      @extend .welcome-card;
+      background-color: $huf-brown;
+      border: solid 5px $huf-brown;
+      color: $huf-yellow;
+    }
+    .card-ravenclaw {
+      @extend .welcome-card;
+      background-color: $rav-bronze;
+      border: solid 5px $rav-bronze;
+      color: $rav-blue;
+    }
+    .card-slytherin {
+      @extend .welcome-card;
+      background-color: $sly-silver;
+      border: solid 5px $sly-silver;
+      color: $sly-green;
+    }
+  }
+
+  .welcome-goback-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+//end of welcome page
 .table-page-container {
   display: flex;
   flex-direction: column;
@@ -317,7 +450,7 @@ body {
 }
 .table-container {
   margin: 0 auto 1rem;
-  height: 50rem;
+  height: 78vh;
   display: flex;
   width: 90%;
   align-items: flex-start;
@@ -325,54 +458,121 @@ body {
 }
 
 .table-model {
-  padding: 1rem;
-  background-color: white;
-  color: black;
+  table-layout: fixed;
   height: 100%;
   display: block;
   overflow: auto;
+  font-size: 1.4rem;
+}
+.thead-model {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: 2rem;
+}
 
-  th {
-    position: sticky;
-    top: 0;
+.thead-gryffindor {
+  @extend .thead-model;
+  background-color: $gry-yellow;
+  color: $gry-red;
+}
+.table-gryffindor {
+  @extend .table-model;
+  color: $gry-text;
+
+  th,
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.126);
+    border-radius: 10px;
   }
+
+  tr,
+  td,
+  th {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.thead-hufflepuff {
+  @extend .thead-model;
+  background-color: $huf-brown;
+  color: $huf-yellow;
+}
+.table-hufflepuff {
+  @extend .table-model;
+  color: $huf-black;
+
+  th,
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.126);
+    border-radius: 10px;
+  }
+
+  tr,
+  td,
+  th {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.thead-ravenclaw {
+  @extend .thead-model;
+  background-color: $rav-bronze;
+  color: $rav-blue;
+}
+.table-ravenclaw {
+  @extend .table-model;
+  color: $rav-text;
+
+  th,
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.126);
+    border-radius: 10px;
+  }
+
+  tr,
+  td,
+  th {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.thead-slytherin {
+  @extend .thead-model;
+  background-color: $sly-silver;
+  color: $sly-green;
+}
+.table-slytherin {
+  @extend .table-model;
+  color: $sly-text;
+
+  th,
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.126);
+    border-radius: 10px;
+  }
+
+  tr,
+  td,
+  th {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.tr-character-dob {
+  width: 16rem;
+}
+.tr-character-house {
+  width: 14rem;
+}
+.tr-character-ancestry {
+  width: 14rem;
+}
+.tr-character-patronus {
+  width: 14rem;
+}
+.tr-character-status {
+  width: 7rem;
 }
 
 //end of table
-
-.welcome-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  font-family: 'Wizard World', sans-serif;
-  font-size: 4rem;
-
-  .welcome-card-container {
-    height: 70%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .welcome-card {
-      // width: 30%;
-      display: flex;
-      max-width: 30rem;
-      max-height: 50rem;
-      margin: 1rem;
-      padding: 1rem;
-      border: solid 5px black;
-    }
-  }
-
-  .welcome-goback-container {
-    height: 30%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
