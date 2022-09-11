@@ -8,12 +8,7 @@ const SpellsPage = () => {
     <Layout>
       <Transitions>
         <div className="table-page-container">
-          <div className="table-container-header">
-            <h1>Spells</h1>
-          </div>
-          <div className="table-container">
-            <SpellTable />
-          </div>
+          <SpellTable />
         </div>
       </Transitions>
     </Layout>

@@ -13,14 +13,4 @@ const Layout = (props: PropsWithChildren) => {
   );
 };
 
-// export const getStaticProps = () => {
-//   let theme = localStorage.getItem('theme');
-
-//   return {
-//     props: {
-//       x: theme,
-//     },
-//   };
-// };
-
 export default Layout;

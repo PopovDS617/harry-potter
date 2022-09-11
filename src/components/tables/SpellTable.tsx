@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from '../../store/store';
 import SpellItem from './SpellItem';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import useTheme from '../../hooks/use-theme';
+import SearchBar from '../input/SearchBar';
 
 const SpellTable = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -22,18 +23,25 @@ const SpellTable = () => {
     return <LoadingSpinner color={spinnerColor} />;
   } else {
     return (
-      <table className={tableTheme}>
-        <thead className={tHeadTheme}>
-          <tr>
-            <th>Name</th>
-            <th>Incantation</th>
-            <th>Effect</th>
-            <th>Type</th>
-            <th>Light</th>
-          </tr>
-        </thead>
-        <tbody>{spellsList}</tbody>
-      </table>
+      <React.Fragment>
+        <div className="table-container-search">
+          <SearchBar />
+        </div>
+        <div className="table-container">
+          <table className={tableTheme}>
+            <thead className={tHeadTheme}>
+              <tr>
+                <th>Name</th>
+                <th>Incantation</th>
+                <th>Effect</th>
+                <th>Type</th>
+                <th>Light</th>
+              </tr>
+            </thead>
+            <tbody>{spellsList}</tbody>
+          </table>
+        </div>
+      </React.Fragment>
     );
   }
 };

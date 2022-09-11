@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from '../navigation/Navbar';
 import { useRouter } from 'next/router';
 
 const Header = () => {

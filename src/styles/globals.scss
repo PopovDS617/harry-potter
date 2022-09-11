@@ -25,15 +25,22 @@
 $gry-red: rgb(116, 0, 1);
 $gry-yellow: rgb(211, 166, 37);
 $gry-text: rgb(244, 190, 43);
+$gry-hover: rgba(211, 164, 37, 0.595);
+
 $huf-yellow: rgb(236, 185, 57);
 $huf-brown: rgb(35, 29, 26);
 $huf-black: rgb(0, 0, 0);
+$huf-hover: rgba(35, 29, 26, 0.316);
+
 $rav-blue: rgb(34, 47, 91);
 $rav-bronze: rgb(216, 151, 53);
 $rav-text: rgb(255, 187, 85);
+$rav-hover: rgba(216, 151, 53, 0.352);
+
 $sly-green: rgb(42, 98, 61);
 $sly-silver: rgb(211, 211, 211);
 $sly-text: rgb(225, 223, 223);
+$sly-hover: rgba(211, 211, 211, 0.307);
 
 html,
 body {
@@ -44,6 +51,13 @@ body {
   overflow: hidden;
   font-family: 'Proxima Nova Regular', sans-serif;
   scrollbar-gutter: auto;
+
+  a {
+    text-decoration: none;
+    &:visited {
+      text-decoration: none;
+    }
+  }
 
   ::-webkit-scrollbar {
     width: 2rem;
@@ -57,15 +71,6 @@ body {
 
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
-  }
-
-  a {
-    text-decoration: none;
-
-    &:visited {
-      text-decoration: none;
-      color: inherit;
-    }
   }
 }
 
@@ -263,6 +268,18 @@ body {
   @extend .layout;
   background-color: $gry-red;
   color: $gry-yellow;
+  a {
+    border-radius: 10px;
+    color: $gry-yellow;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $gry-hover;
+      transition: all 0.2s ease-in-out;
+      color: $gry-red;
+    }
+  }
+
   ::-webkit-scrollbar-track {
     background-color: $gry-red;
     border: solid 2px $gry-yellow;
@@ -279,6 +296,17 @@ body {
   background-color: $huf-yellow;
   color: $huf-brown;
 
+  a {
+    border-radius: 10px;
+    color: $huf-brown;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $huf-hover;
+      transition: all 0.2s ease-in-out;
+      color: $huf-yellow;
+    }
+  }
   ::-webkit-scrollbar-track {
     background-color: $huf-yellow;
     border: solid 2px $huf-brown;
@@ -294,6 +322,17 @@ body {
   @extend .layout;
   background-color: $rav-blue;
   color: $rav-bronze;
+  a {
+    border-radius: 10px;
+    color: $rav-bronze;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $rav-hover;
+      transition: all 0.2s ease-in-out;
+      color: $rav-blue;
+    }
+  }
   ::-webkit-scrollbar-track {
     background-color: $rav-blue;
     border: solid 2px $rav-bronze;
@@ -309,6 +348,17 @@ body {
   @extend .layout;
   background-color: $sly-green;
   color: $sly-silver;
+  a {
+    border-radius: 10px;
+    color: $sly-silver;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $sly-hover;
+      transition: all 0.2s ease-in-out;
+      color: $sly-green;
+    }
+  }
   ::-webkit-scrollbar-track {
     background-color: $sly-green;
     border: solid 2px $sly-silver;
@@ -349,19 +399,55 @@ body {
     padding: 1rem;
     font-family: 'Wizard World', sans-serif;
 
-    .active-link .link-gryffindor {
+    a {
+      margin: 0 0.5rem;
+      padding: 1rem;
     }
-    .link-hufflepuff {
-    }
-    .link-ravenclaw {
-    }
-    .link-slytherin {
+
+    .link-active {
+      border-radius: 10px;
+
+      padding: 1rem;
+      text-decoration: none;
     }
 
     a {
       font-size: 2rem;
       padding: 1rem;
     }
+  }
+}
+
+.link-gryffindor {
+  @extend .link-active;
+  background-color: $gry-yellow;
+  color: $gry-red !important;
+  &:hover {
+    background-color: $gry-yellow !important;
+  }
+}
+.link-hufflepuff {
+  @extend .link-active;
+  background-color: $huf-brown;
+  color: $huf-yellow !important;
+  &:hover {
+    background-color: $huf-brown !important;
+  }
+}
+.link-ravenclaw {
+  @extend .link-active;
+  background-color: $rav-bronze;
+  color: $rav-blue !important;
+  &:hover {
+    background-color: $rav-bronze !important;
+  }
+}
+.link-slytherin {
+  @extend .link-active;
+  background-color: $sly-silver;
+  color: $sly-green !important;
+  &:hover {
+    background-color: $sly-silver !important;
   }
 }
 
@@ -441,6 +527,10 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    a {
+      background-color: inherit;
+      color: inherit;
+    }
   }
 }
 
@@ -451,11 +541,53 @@ body {
   align-items: center;
   justify-content: center;
 }
-.table-container-header {
-  height: 3rem;
+.table-container-search {
+  margin: 1rem 0;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .input-model {
+    padding: 0.2rem 0.5rem;
+    font-size: 2rem;
+    font-family: inherit;
+
+    color: inherit;
+    border-radius: 10px;
+    height: 3rem;
+    width: 20rem;
+    background-color: inherit;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .clear-input {
+    cursor: pointer;
+  }
+
+  .input-gryffindor {
+    @extend .input-model;
+    border: solid 2px $gry-yellow;
+  }
+  .input-hufflepuff {
+    @extend .input-model;
+    border: solid 2px $huf-brown;
+  }
+  .input-ravenclaw {
+    @extend .input-model;
+    border: solid 2px $rav-bronze;
+  }
+  .input-slytherin {
+    @extend .input-model;
+    border: solid 2px $sly-silver;
+  }
 }
 .table-container {
   margin: 0 auto 1rem;
