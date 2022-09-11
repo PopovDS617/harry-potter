@@ -1,5 +1,6 @@
 import React from 'react';
-import SearchBar from '../components/input/SearchBar';
+import Transitions from '../components/animation/Transitions';
+
 import Layout from '../components/layout/Layout';
 
 import CharacterTable from '../components/tables/CharacterTable';
@@ -7,9 +8,11 @@ import CharacterTable from '../components/tables/CharacterTable';
 const CharactersPage = () => {
   return (
     <Layout>
-      <div className="table-page-container">
-        <CharacterTable />
-      </div>
+      <Transitions>
+        <div className="table-page-container">
+          <CharacterTable />
+        </div>
+      </Transitions>
     </Layout>
   );
 };
