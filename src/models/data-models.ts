@@ -29,6 +29,14 @@ export interface ICharacterState {
   message: string | unknown;
 }
 
+export interface IPotionState {
+  potions: IPotion[];
+  isError: boolean;
+  isSuccess: boolean;
+  isLoading: boolean;
+  message: string | unknown;
+}
+
 export interface IPotion {
   id?: string;
   name: string;
@@ -47,6 +55,13 @@ export interface IPotion {
   }[];
 }
 
+export interface ISpellState {
+  spells: ISpell[];
+  isError: boolean;
+  isSuccess: boolean;
+  isLoading: boolean;
+  message: string | unknown;
+}
 export interface ISpell {
   id?: string;
   name: string;

@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ISpellState } from '../../models/data-models';
 
 import getAllSpells from './spellsService';
 
-const initialState = {
+const initialState: ISpellState = {
   spells: [],
   isError: false,
   isSuccess: false,
@@ -19,7 +20,7 @@ export const getSpells = createAsyncThunk(
       (error.response && error.response.data && error.response.data.message) ||
         error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(onmessage);
     }
   }
 );

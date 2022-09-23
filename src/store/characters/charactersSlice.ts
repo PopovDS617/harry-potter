@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { CharacterState } from '../../models/data-models';
+import { ICharacterState } from '../../models/data-models';
 import getAllCharacters from './charactersService';
 
-const initialState: CharacterState = {
+const initialState: ICharacterState = {
   characters: [],
   isError: false,
   isSuccess: false,
@@ -19,7 +19,7 @@ export const getCharacters = createAsyncThunk(
       (error.response && error.response.data && error.response.data.message) ||
         error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(onmessage);
     }
   }
 );

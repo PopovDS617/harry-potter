@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ICharacterState, IPotionState } from '../../models/data-models';
 
 import getAllPotions from './potionsService';
 
-const initialState = {
+const initialState: IPotionState = {
   potions: [],
   isError: false,
   isSuccess: false,
@@ -19,7 +20,7 @@ export const getPotions = createAsyncThunk(
       (error.response && error.response.data && error.response.data.message) ||
         error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(message);
+      return thunkAPI.rejectWithValue(onmessage);
     }
   }
 );

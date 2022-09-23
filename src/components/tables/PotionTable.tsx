@@ -16,7 +16,7 @@ function PotionTable() {
     (state: RootState) => state.potion
   );
 
-  const [itemsList, setItemsList] = useState([]);
+  const [itemsList, setItemsList] = useState(potions);
   const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
