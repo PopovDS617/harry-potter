@@ -485,6 +485,22 @@ body {
       color: $gry-red;
       cursor: pointer;
       text-align: center;
+      transition: transform 0.5s ease;
+      &:first-child {
+        &:hover {
+          transform: translateY(-15px) rotate(2deg);
+        }
+      }
+      &:nth-child(even) {
+        &:hover {
+          transform: translateY(-20px);
+        }
+      }
+      &:last-child {
+        &:hover {
+          transform: translateY(-15px) rotate(-2deg);
+        }
+      }
     }
 
     img {
@@ -557,7 +573,6 @@ body {
     padding: 0.2rem 0.5rem;
     font-size: 2rem;
     font-family: inherit;
-
     color: inherit;
     border-radius: 10px;
     height: 3rem;
@@ -575,35 +590,57 @@ body {
   .input-gryffindor {
     @extend .input-model;
     border: solid 2px $gry-yellow;
+    &::placeholder {
+      color: rgba(211, 166, 37, 0.553);
+    }
   }
   .input-hufflepuff {
     @extend .input-model;
     border: solid 2px $huf-brown;
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.553);
+    }
   }
   .input-ravenclaw {
     @extend .input-model;
     border: solid 2px $rav-bronze;
+    &::placeholder {
+      color: rgba(216, 151, 53, 0.492);
+    }
   }
   .input-slytherin {
     @extend .input-model;
     border: solid 2px $sly-silver;
+
+    &::placeholder {
+      color: rgba(211, 211, 211, 0.536);
+    }
   }
 }
 .table-container {
   margin: 0 auto 1rem;
   height: 75vh;
   display: flex;
-  width: 90%;
+  width: 70%;
   align-items: flex-start;
   justify-content: center;
 }
 
 .table-model {
+  width: 100%;
   table-layout: fixed;
   height: 100%;
   display: block;
-  overflow: auto;
+  overflow-y: scroll;
   font-size: 1.4rem;
+  table-layout: fixed;
+
+  td {
+    width: 200px;
+    td + td {
+      width: auto;
+    }
+  }
 }
 .thead-model {
   position: sticky;

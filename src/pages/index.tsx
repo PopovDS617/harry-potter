@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { uiActions } from '../store/ui/uiSlice';
 import { useDispatch } from 'react-redux';
 import Transitions from '../components/animation/Transitions';
+import { getPotions } from '../store/potions/potionsSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();

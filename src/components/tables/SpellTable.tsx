@@ -25,7 +25,7 @@ const SpellTable = () => {
     return (
       <React.Fragment>
         <div className="table-container-search">
-          <SearchBar />
+          <SearchBar placeholder="find spell" />
         </div>
         <div className="table-container">
           <table className={tableTheme}>

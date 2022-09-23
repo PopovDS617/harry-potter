@@ -16,17 +16,6 @@ const PotionItem = (props: Props) => {
   } = props.item;
 
   const ingredientsTransformed = ingredients.map((el) => el.name).join(', ');
-  // const inventorsTransformed = inventors
-  //   .map((el) => {
-  //     if (!el.firstName && !el.lastName) {
-  //       return;
-  //     } else if (el.firstName === null) {
-  //       return el.lastName;
-  //     } else {
-  //       return el.firstName + ' ' + el.lastName;
-  //     }
-  //   })
-  //   .join(', ');
 
   return (
     <tr>
@@ -36,7 +25,6 @@ const PotionItem = (props: Props) => {
       <td>{characteristics} </td>
       <td>{difficulty} </td>
       <td>{ingredientsTransformed}</td>
-      {/* <td>{inventorsTransformed}</td> */}
     </tr>
   );
 };
