@@ -7,42 +7,61 @@ import LoadingSpinner from '../../ui/LoadingSpinner';
 import useTheme from '../../hooks/use-theme';
 import SearchBar from '../input/SearchBar';
 import { tableSearch } from '../../utils/table-search';
+import { IPotion } from '../../models/data-models';
+import NothingFound from './NothingFound';
 
 function PotionTable() {
   const dispatch: AppDispatch = useDispatch();
-
   const { spinnerColor, tHeadTheme, tableTheme } = useTheme();
-  const { potions, isLoading } = useSelector(
-    (state: RootState) => state.potion
-  );
-
-  const [itemsList, setItemsList] = useState(potions);
-  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     dispatch(getPotions());
   }, [dispatch]);
 
+  const { potions, isLoading } = useSelector(
+    (state: RootState) => state.potion
+  );
+
   useEffect(() => {
-    setItemsList(potions);
+    if (potions.length) {
+      const allPotionsList = potions.map((el: IPotion) => {
+        return <PotionItem key={Math.random().toFixed(10)} item={el} />;
+      });
+      setPotionList(allPotionsList);
+    }
   }, [potions]);
+
+  const [potionList, setPotionList] = useState<any>();
+
+  const [searchText, setSearchText] = useState('');
+  console.log(potionList);
 
   const searchHandler = (text: string) => {
     setSearchText(text);
+    if (searchText.length < 2) {
+      const allPotionsList = potions.map((el: IPotion) => {
+        return <PotionItem key={Math.random().toFixed(10)} item={el} />;
+      });
+      setPotionList(allPotionsList);
+    }
+    setSearchText(text);
     if (searchText.length >= 2) {
-      const potionsKeys = ['name', 'effect', 'difficulty'];
-      const filteredItems = tableSearch(searchText, potions, potionsKeys);
-
-      setItemsList(filteredItems);
+      const potionKeys = ['effect', 'name', 'difficulty'];
+      let filteredItems = tableSearch(searchText, potions, potionKeys);
+      if (filteredItems.length) {
+        const filtered = filteredItems.map((el: IPotion) => {
+          return <PotionItem key={Math.random().toFixed(10)} item={el} />;
+        });
+        setPotionList(filtered);
+      } else setPotionList(false);
     }
   };
   const cancelSearchHandler = () => {
-    setItemsList(potions);
+    const allPotionsList = potions.map((el: IPotion) => {
+      return <PotionItem key={Math.random().toFixed(10)} item={el} />;
+    });
+    setPotionList(allPotionsList);
   };
-
-  const potionsList = itemsList?.map((el) => {
-    return <PotionItem key={Math.random().toFixed(10)} item={el} />;
-  });
 
   if (isLoading) {
     return <LoadingSpinner color={spinnerColor} />;
@@ -68,7 +87,9 @@ function PotionTable() {
                 <th>Ingredients </th>
               </tr>
             </thead>
-            <tbody>{potionsList}</tbody>
+            <tbody>
+              {potionList === false ? <NothingFound /> : potionList}
+            </tbody>
           </table>
         </div>
       </React.Fragment>

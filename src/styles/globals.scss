@@ -635,13 +635,16 @@ body {
   font-size: 1.4rem;
   table-layout: fixed;
 
-  td {
-    width: 200px;
-    td + td {
-      width: auto;
-    }
+  th {
+    width: 25rem;
+  }
+
+  .nothing-found {
+    text-align: center;
+    font-size: 2.2rem;
   }
 }
+
 .thead-model {
   position: sticky;
   top: 0;

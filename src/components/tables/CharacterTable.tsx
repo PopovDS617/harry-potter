@@ -12,35 +12,55 @@ import NothingFound from './NothingFound';
 
 function CharacterTable() {
   const dispatch: AppDispatch = useDispatch();
+  const { spinnerColor, tHeadTheme, tableTheme } = useTheme();
 
   useEffect(() => {
     dispatch(getCharacters());
   }, [dispatch]);
-  const { spinnerColor, tHeadTheme, tableTheme } = useTheme();
+
   const { characters, isLoading } = useSelector(
     (state: RootState) => state.character
   );
-  const [itemsList, setItemsList] = useState(characters);
+
+  useEffect(() => {
+    if (characters.length) {
+      const allCharacterList = characters.map((el: ICharacter) => {
+        return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
+      });
+      setCharacterList(allCharacterList);
+    }
+  }, [characters]);
+
+  const [characterList, setCharacterList] = useState<any>();
+
   const [searchText, setSearchText] = useState('');
 
   const searchHandler = (text: string) => {
     setSearchText(text);
-    if (searchText.length >= 2) {
+    if (searchText.length < 2) {
+      const allCharacterList = characters.map((el: ICharacter) => {
+        return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
+      });
+      setCharacterList(allCharacterList);
+    } else if (searchText.length >= 2) {
       const characterKeys = ['name', 'house', 'ancestry'];
-      let filteredItems = tableSearch(searchText, characters, characterKeys);
-
-      setItemsList(filteredItems);
+      const filteredItems = tableSearch(searchText, characters, characterKeys);
+      if (filteredItems.length) {
+        const filtered = filteredItems.map((el: ICharacter) => {
+          return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
+        });
+        setCharacterList(filtered);
+      } else setCharacterList(false);
     }
   };
   const cancelSearchHandler = () => {
-    setItemsList(characters);
+    const allCharacterList = characters.map((el: ICharacter) => {
+      return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
+    });
+    setCharacterList(allCharacterList);
   };
 
-  let charactersList = itemsList.map((el: ICharacter) => {
-    return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
-  });
-
-  if (isLoading && characters.length === 0) {
+  if (isLoading) {
     return <LoadingSpinner color={spinnerColor} />;
   } else {
     return (
@@ -64,7 +84,9 @@ function CharacterTable() {
                 <th className="tr-character-status">Status </th>
               </tr>
             </thead>
-            <tbody>{charactersList}</tbody>
+            <tbody>
+              {characterList === false ? <NothingFound /> : characterList}
+            </tbody>
           </table>
         </div>
       </React.Fragment>
