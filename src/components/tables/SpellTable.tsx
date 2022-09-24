@@ -32,7 +32,6 @@ const SpellTable = () => {
   const [spellList, setSpellList] = useState<any>();
 
   const [searchText, setSearchText] = useState('');
-  console.log(spellList);
 
   const searchHandler = (text: string) => {
     setSearchText(text);
