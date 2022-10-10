@@ -21,6 +21,7 @@ const WelcomePage = () => {
                   height={400}
                   width={400}
                   quality={80}
+                  priority
                 />
                 <div className="welcome-card-text">Characters</div>
               </div>

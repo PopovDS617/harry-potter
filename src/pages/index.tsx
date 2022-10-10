@@ -23,6 +23,7 @@ const HomePage = () => {
           height={960}
           alt="background image"
           layout="fill"
+          priority
         />
       </div>
       <div className="homepage-header">Choose your house</div>
