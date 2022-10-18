@@ -91,6 +91,8 @@ body {
   align-items: center;
 
   .homepage-header {
+    backdrop-filter: blur(10px);
+    color:white;
     display: flex;
     justify-content: center;
     align-items: center;
