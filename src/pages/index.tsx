@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { uiActions } from '../store/ui/uiSlice';
 import { useDispatch } from 'react-redux';
 import Transitions from '../components/animation/Transitions';
-import { getPotions } from '../store/potions/potionsSlice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -37,8 +36,8 @@ const HomePage = () => {
               <Image
                 src="/images/gryffindor_crest.png"
                 alt="house crest"
-                height="300"
-                width="270"
+                height="270"
+                width="240"
               />
             </div>
           </Link>
@@ -50,8 +49,8 @@ const HomePage = () => {
               <Image
                 src="/images/hufflepuff_crest.png"
                 alt="house crest"
-                height="300"
-                width="270"
+                height="270"
+                width="240"
               />
             </div>
           </Link>
@@ -63,8 +62,8 @@ const HomePage = () => {
               <Image
                 src="/images/ravenclaw_crest.png"
                 alt="house crest"
-                height="300"
-                width="270"
+                height="270"
+                width="240"
               />
             </div>
           </Link>
@@ -76,8 +75,8 @@ const HomePage = () => {
               <Image
                 src="/images/slytherin_crest.png"
                 alt="house crest"
-                height="300"
-                width="270"
+                height="270"
+                width="240"
               />
             </div>
           </Link>
