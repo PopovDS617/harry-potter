@@ -91,6 +91,8 @@ body {
   align-items: center;
 
   .homepage-header {
+    border-radius:20px;
+    padding:5px;
     backdrop-filter: blur(10px);
     color:white;
     display: flex;
