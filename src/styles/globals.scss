@@ -92,12 +92,12 @@ body {
 
   .homepage-header {
     border-radius:20px;
-    padding:5px;
+    padding:5px 10px;
     backdrop-filter: blur(10px);
     color:white;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     font-size: clamp(3rem, 0.5rem + 10vh, 5rem);
     font-family: 'Wizard World', sans-serif;
     text-align: center;
