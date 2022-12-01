@@ -72,6 +72,11 @@ body {
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
   }
+  
+     ::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+  
 }
 
 .homepage-background {
