@@ -85,7 +85,7 @@ function CharacterTable() {
               </tr>
             </thead>
             <tbody>
-              {characterList === false ? <NothingFound /> : characterList}
+              {characterList.length===0 ? <NothingFound /> : characterList}
             </tbody>
           </table>
         </div>
