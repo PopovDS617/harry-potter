@@ -31,7 +31,7 @@ function CharacterTable() {
     }
   }, [characters]);
 
-  const [characterList, setCharacterList] = useState<any>();
+  const [characterList, setCharacterList] = useState([]);
 
   const [searchText, setSearchText] = useState('');
 
