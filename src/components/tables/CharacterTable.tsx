@@ -9,6 +9,7 @@ import SearchBar from '../input/SearchBar';
 import { ICharacter } from '../../models/data-models';
 import { tableSearch } from '../../utils/table-search';
 import NothingFound from './NothingFound';
+import ErrorMessage from './ErrorMessage';
 
 function CharacterTable() {
   const dispatch: AppDispatch = useDispatch();
@@ -18,7 +19,7 @@ function CharacterTable() {
     dispatch(getCharacters());
   }, [dispatch]);
 
-  const { characters, isLoading } = useSelector(
+  const { characters, isLoading, isError } = useSelector(
     (state: RootState) => state.character
   );
 
@@ -31,7 +32,7 @@ function CharacterTable() {
     }
   }, [characters]);
 
-  const [characterList, setCharacterList] = useState([]);
+  const [characterList, setCharacterList] = useState<any>([]);
 
   const [searchText, setSearchText] = useState('');
 
@@ -85,7 +86,8 @@ function CharacterTable() {
               </tr>
             </thead>
             <tbody>
-              {characterList.length===0 ? <NothingFound /> : characterList}
+              {isError && <ErrorMessage />}
+              {!isError && !characterList ? <NothingFound /> : characterList}
             </tbody>
           </table>
         </div>

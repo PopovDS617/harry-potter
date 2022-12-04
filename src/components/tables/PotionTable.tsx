@@ -9,6 +9,7 @@ import SearchBar from '../input/SearchBar';
 import { tableSearch } from '../../utils/table-search';
 import { IPotion } from '../../models/data-models';
 import NothingFound from './NothingFound';
+import ErrorMessage from './ErrorMessage';
 
 function PotionTable() {
   const dispatch: AppDispatch = useDispatch();
@@ -18,7 +19,7 @@ function PotionTable() {
     dispatch(getPotions());
   }, [dispatch]);
 
-  const { potions, isLoading } = useSelector(
+  const { potions, isLoading, isError } = useSelector(
     (state: RootState) => state.potion
   );
 
@@ -31,10 +32,9 @@ function PotionTable() {
     }
   }, [potions]);
 
-  const [potionList, setPotionList] = useState<any>();
+  const [potionList, setPotionList] = useState<any>([]);
 
   const [searchText, setSearchText] = useState('');
-  console.log(potionList);
 
   const searchHandler = (text: string) => {
     setSearchText(text);
@@ -88,7 +88,8 @@ function PotionTable() {
               </tr>
             </thead>
             <tbody>
-              {potionList === false ? <NothingFound /> : potionList}
+              {isError && <ErrorMessage />}
+              {!isError && !potionList ? <NothingFound /> : potionList}
             </tbody>
           </table>
         </div>

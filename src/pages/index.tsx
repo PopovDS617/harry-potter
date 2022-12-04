@@ -9,7 +9,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const changeTheme = (house: string) => {
-    console.log(house);
     dispatch(uiActions.changeTheme(house));
   };
 

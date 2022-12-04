@@ -9,6 +9,7 @@ import SearchBar from '../input/SearchBar';
 import { ISpell } from '../../models/data-models';
 import { tableSearch } from '../../utils/table-search';
 import NothingFound from './NothingFound';
+import ErrorMessage from './ErrorMessage';
 
 const SpellTable = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -18,7 +19,9 @@ const SpellTable = () => {
     dispatch(getSpells());
   }, [dispatch]);
 
-  const { spells, isLoading } = useSelector((state: RootState) => state.spell);
+  const { spells, isLoading, isError } = useSelector(
+    (state: RootState) => state.spell
+  );
 
   useEffect(() => {
     if (spells.length) {
@@ -29,7 +32,7 @@ const SpellTable = () => {
     }
   }, [spells]);
 
-  const [spellList, setSpellList] = useState<any>();
+  const [spellList, setSpellList] = useState<any>([]);
 
   const [searchText, setSearchText] = useState('');
 
@@ -83,7 +86,10 @@ const SpellTable = () => {
                 <th>Light</th>
               </tr>
             </thead>
-            <tbody>{spellList === false ? <NothingFound /> : spellList}</tbody>
+            <tbody>
+              {isError && <ErrorMessage />}
+              {!isError && !spellList ? <NothingFound /> : spellList}
+            </tbody>
           </table>
         </div>
       </React.Fragment>
