@@ -24,7 +24,9 @@ function CharacterTable() {
   );
 
   useEffect(() => {
-    if (characters.length) {
+    if (!characters) {
+      return;
+    } else if (characters.length > 0) {
       const allCharacterList = characters.map((el: ICharacter) => {
         return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
       });
@@ -44,7 +46,7 @@ function CharacterTable() {
       });
       setCharacterList(allCharacterList);
     } else if (searchText.length >= 2) {
-      const characterKeys = ['name', 'house', 'ancestry'];
+      const characterKeys = ['name', 'house', 'role'];
       const filteredItems = tableSearch(searchText, characters, characterKeys);
       if (filteredItems.length) {
         const filtered = filteredItems.map((el: ICharacter) => {
@@ -78,11 +80,8 @@ function CharacterTable() {
             <thead className={tHeadTheme}>
               <tr>
                 <th>Name</th>
+                <th className="tr-character-house">Role</th>
                 <th className="tr-character-house">House</th>
-                <th className="tr-character-dob">Date of birth</th>
-                <th className="tr-character-ancestry">Ancestry </th>
-                <th className="tr-character-patronus">Patronus </th>
-                <th className="tr-character-status">Status </th>
               </tr>
             </thead>
             <tbody>

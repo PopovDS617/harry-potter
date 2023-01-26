@@ -2,6 +2,7 @@ export interface ICharacter {
   id?: string;
   name: string;
   alternate_names?: [];
+  role: string;
   species?: string;
   gender?: string;
   house?: string;
