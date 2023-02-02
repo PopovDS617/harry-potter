@@ -32,7 +32,7 @@ function PotionTable() {
     }
   }, [potions]);
 
-  const [potionList, setPotionList] = useState<any>([]);
+  const [potionList, setPotionList] = useState<React.ReactNode[] | null>([]);
 
   const [searchText, setSearchText] = useState('');
 
@@ -48,12 +48,12 @@ function PotionTable() {
     if (searchText.length >= 2) {
       const potionKeys = ['effect', 'name', 'difficulty'];
       let filteredItems = tableSearch(searchText, potions, potionKeys);
-      if (filteredItems.length) {
+      if (filteredItems.length > 0) {
         const filtered = filteredItems.map((el: IPotion) => {
           return <PotionItem key={Math.random().toFixed(10)} item={el} />;
         });
         setPotionList(filtered);
-      } else setPotionList(false);
+      } else setPotionList([]);
     }
   };
   const cancelSearchHandler = () => {

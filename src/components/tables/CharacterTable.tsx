@@ -34,7 +34,9 @@ function CharacterTable() {
     }
   }, [characters]);
 
-  const [characterList, setCharacterList] = useState<any>([]);
+  const [characterList, setCharacterList] = useState<React.ReactNode[] | null>(
+    []
+  );
 
   const [searchText, setSearchText] = useState('');
 
@@ -53,7 +55,7 @@ function CharacterTable() {
           return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
         });
         setCharacterList(filtered);
-      } else setCharacterList(false);
+      } else setCharacterList([]);
     }
   };
   const cancelSearchHandler = () => {

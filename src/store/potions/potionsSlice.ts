@@ -14,14 +14,14 @@ const initialState: IPotionState = {
 export const getPotions = createAsyncThunk(
   'potions/getAll',
   async (_, thunkAPI) => {
-    try {
-      return await getAllPotions();
-    } catch (error: any) {
-      (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(onmessage);
+    const response = await getAllPotions();
+    if (response.status !== 200) {
+      return thunkAPI.rejectWithValue({
+        message: 'Failed to fetch todos.',
+      });
     }
+
+    return response;
   }
 );
 

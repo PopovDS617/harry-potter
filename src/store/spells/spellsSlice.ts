@@ -14,14 +14,14 @@ const initialState: ISpellState = {
 export const getSpells = createAsyncThunk(
   'spells/getAll',
   async (_, thunkAPI) => {
-    try {
-      return await getAllSpells();
-    } catch (error: any) {
-      (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(onmessage);
+    const response = await getAllSpells();
+    if (response.status !== 200) {
+      return thunkAPI.rejectWithValue({
+        message: 'Failed to fetch todos.',
+      });
     }
+
+    return response;
   }
 );
 

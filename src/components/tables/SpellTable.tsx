@@ -32,7 +32,7 @@ const SpellTable = () => {
     }
   }, [spells]);
 
-  const [spellList, setSpellList] = useState<any>([]);
+  const [spellList, setSpellList] = useState<React.ReactNode[] | null>([]);
 
   const [searchText, setSearchText] = useState('');
 
@@ -53,7 +53,7 @@ const SpellTable = () => {
           return <SpellItem key={Math.random().toFixed(10)} item={el} />;
         });
         setSpellList(filtered);
-      } else setSpellList(false);
+      } else setSpellList([]);
     }
   };
   const cancelSearchHandler = () => {

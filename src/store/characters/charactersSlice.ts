@@ -13,14 +13,14 @@ const initialState: ICharacterState = {
 export const getCharacters = createAsyncThunk(
   'characters/getAll',
   async (_, thunkAPI) => {
-    try {
-      return await getAllCharacters();
-    } catch (error: any) {
-      (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(onmessage);
+    const response = await getAllCharacters();
+    if (response.status !== 200) {
+      return thunkAPI.rejectWithValue({
+        message: 'Failed to fetch todos.',
+      });
     }
+
+    return response;
   }
 );
 
