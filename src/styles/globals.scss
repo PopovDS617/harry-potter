@@ -72,11 +72,10 @@ body {
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
   }
-  
-     ::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-  
+
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
 }
 
 .homepage-background {
@@ -298,10 +297,10 @@ body {
     &:hover {
       background-color: yellow;
     }
-    
+
     ::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
+      background-color: transparent;
+    }
   }
 }
 .layout-hufflepuff {
@@ -330,8 +329,8 @@ body {
       background-color: $huf-black;
     }
     ::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
+      background-color: transparent;
+    }
   }
 }
 .layout-ravenclaw {
@@ -359,9 +358,8 @@ body {
       background-color: $rav-text;
     }
     ::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
-    
+      background-color: transparent;
+    }
   }
 }
 .layout-slytherin {
@@ -389,8 +387,8 @@ body {
       background-color: white;
     }
     ::-webkit-scrollbar-corner {
-  background-color: transparent;
-}
+      background-color: transparent;
+    }
   }
 }
 

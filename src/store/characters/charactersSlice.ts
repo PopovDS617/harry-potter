@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ICharacterState } from '../../models/data-models';
 import getAllCharacters from './charactersService';
+import { threadId } from 'worker_threads';
 
 const initialState: ICharacterState = {
   characters: [],
@@ -13,14 +14,13 @@ const initialState: ICharacterState = {
 export const getCharacters = createAsyncThunk(
   'characters/getAll',
   async (_, thunkAPI) => {
-    const response = await getAllCharacters();
-    if (response.status !== 200) {
-      return thunkAPI.rejectWithValue({
-        message: 'Failed to fetch todos.',
-      });
-    }
+    try {
+      const response = await getAllCharacters();
 
-    return response;
+      return response;
+    } catch (err) {
+      throw new Error('faile to fetch');
+    }
   }
 );
 

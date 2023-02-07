@@ -17,11 +17,10 @@ const HomePage = () => {
       <div className="homepage-background">
         <Image
           src="/images/temporary_backg.jpg"
-          width={1820}
-          height={960}
           alt="background image"
-          layout="fill"
+          objectFit="cover"
           priority
+          layout="fill"
         />
       </div>
       <div className="homepage-header">Choose your house</div>

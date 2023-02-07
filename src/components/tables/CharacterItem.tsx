@@ -8,7 +8,6 @@ interface Props {
 
 const CharacterItem = (props: Props) => {
   const { name, house, role } = props.item;
-  console.log(name);
 
   return (
     <tr>
