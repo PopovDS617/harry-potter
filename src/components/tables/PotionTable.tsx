@@ -7,7 +7,7 @@ import LoadingSpinner from '../../ui/LoadingSpinner';
 import useTheme from '../../hooks/use-theme';
 import SearchBar from '../input/SearchBar';
 import { tableSearch } from '../../utils/table-search';
-import { IPotion } from '../../models/data-models';
+import { Potion } from '../../models/data-models';
 import NothingFound from './NothingFound';
 import ErrorMessage from './ErrorMessage';
 
@@ -25,7 +25,7 @@ function PotionTable() {
 
   useEffect(() => {
     if (potions.length) {
-      const allPotionsList = potions.map((el: IPotion) => {
+      const allPotionsList = potions.map((el: Potion) => {
         return <PotionItem key={Math.random().toFixed(10)} item={el} />;
       });
       setPotionList(allPotionsList);
@@ -39,7 +39,7 @@ function PotionTable() {
   const searchHandler = (text: string) => {
     setSearchText(text);
     if (searchText.length < 2) {
-      const allPotionsList = potions.map((el: IPotion) => {
+      const allPotionsList = potions.map((el: Potion) => {
         return <PotionItem key={Math.random().toFixed(10)} item={el} />;
       });
       setPotionList(allPotionsList);
@@ -49,7 +49,7 @@ function PotionTable() {
       const potionKeys = ['effect', 'name', 'difficulty'];
       let filteredItems = tableSearch(searchText, potions, potionKeys);
       if (filteredItems.length > 0) {
-        const filtered = filteredItems.map((el: IPotion) => {
+        const filtered = filteredItems.map((el: Potion) => {
           return <PotionItem key={Math.random().toFixed(10)} item={el} />;
         });
         setPotionList(filtered);
@@ -57,7 +57,7 @@ function PotionTable() {
     }
   };
   const cancelSearchHandler = () => {
-    const allPotionsList = potions.map((el: IPotion) => {
+    const allPotionsList = potions.map((el: Potion) => {
       return <PotionItem key={Math.random().toFixed(10)} item={el} />;
     });
     setPotionList(allPotionsList);

@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ICharacterState, IPotionState } from '../../models/data-models';
+import { CharacterState, PotionState } from '../../models/data-models';
 
 import getAllPotions from './potionsService';
 
-const initialState: IPotionState = {
+const initialState: PotionState = {
   potions: [],
   isError: false,
   isSuccess: false,

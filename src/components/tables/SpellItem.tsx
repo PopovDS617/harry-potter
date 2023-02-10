@@ -1,8 +1,8 @@
 import React from 'react';
-import { ISpell } from '../../models/data-models';
+import { Spell } from '../../models/data-models';
 
 type Props = {
-  item: ISpell;
+  item: Spell;
 };
 
 const SpellItem = (props: Props) => {

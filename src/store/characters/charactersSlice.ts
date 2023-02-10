@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ICharacterState } from '../../models/data-models';
+import { CharacterState } from '../../models/data-models';
 import getAllCharacters from './charactersService';
 import { threadId } from 'worker_threads';
 
-const initialState: ICharacterState = {
+const initialState: CharacterState = {
   characters: [],
   isError: false,
   isSuccess: false,

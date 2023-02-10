@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ISpellState } from '../../models/data-models';
+import { SpellState } from '../../models/data-models';
 
 import getAllSpells from './spellsService';
 
-const initialState: ISpellState = {
+const initialState: SpellState = {
   spells: [],
   isError: false,
   isSuccess: false,

@@ -1,4 +1,4 @@
-export interface ICharacter {
+export interface Character {
   id?: string;
   name: string;
   alternate_names?: [];
@@ -22,23 +22,23 @@ export interface ICharacter {
   image?: string;
 }
 
-export interface ICharacterState {
-  characters: ICharacter[];
+export interface CharacterState {
+  characters: Character[];
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
   message: string | unknown;
 }
 
-export interface IPotionState {
-  potions: IPotion[];
+export interface PotionState {
+  potions: Potion[];
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
   message: string | unknown;
 }
 
-export interface IPotion {
+export interface Potion {
   id?: string;
   name: string;
   effect: string;
@@ -56,14 +56,14 @@ export interface IPotion {
   }[];
 }
 
-export interface ISpellState {
-  spells: ISpell[];
+export interface SpellState {
+  spells: Spell[];
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
   message: string | unknown;
 }
-export interface ISpell {
+export interface Spell {
   id?: string;
   name: string;
   incantation?: string;

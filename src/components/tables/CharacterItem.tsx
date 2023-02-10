@@ -1,9 +1,8 @@
 import React from 'react';
-import { ICharacter } from '../../models/data-models';
-import { dateConverter } from '../../utils/date-converter';
+import { Character } from '../../models/data-models';
 
 interface Props {
-  item: ICharacter;
+  item: Character;
 }
 
 const CharacterItem = (props: Props) => {

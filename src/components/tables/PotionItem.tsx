@@ -1,8 +1,8 @@
 import React from 'react';
-import { IPotion } from '../../models/data-models';
+import { Potion } from '../../models/data-models';
 
 interface Props {
-  item: IPotion;
+  item: Potion;
 }
 
 const PotionItem = (props: Props) => {

@@ -6,7 +6,7 @@ import CharacterItem from '../../components/tables/CharacterItem';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import useTheme from '../../hooks/use-theme';
 import SearchBar from '../input/SearchBar';
-import { ICharacter } from '../../models/data-models';
+import { Character } from '../../models/data-models';
 import { tableSearch } from '../../utils/table-search';
 import NothingFound from './NothingFound';
 import ErrorMessage from './ErrorMessage';
@@ -27,7 +27,7 @@ function CharacterTable() {
     if (!characters) {
       return;
     } else if (characters.length > 0) {
-      const allCharacterList = characters.map((el: ICharacter) => {
+      const allCharacterList = characters.map((el: Character) => {
         return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
       });
       setCharacterList(allCharacterList);
@@ -43,7 +43,7 @@ function CharacterTable() {
   const searchHandler = (text: string) => {
     setSearchText(text);
     if (searchText.length < 2) {
-      const allCharacterList = characters.map((el: ICharacter) => {
+      const allCharacterList = characters.map((el: Character) => {
         return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
       });
       setCharacterList(allCharacterList);
@@ -51,7 +51,7 @@ function CharacterTable() {
       const characterKeys = ['name', 'house', 'role'];
       const filteredItems = tableSearch(searchText, characters, characterKeys);
       if (filteredItems.length) {
-        const filtered = filteredItems.map((el: ICharacter) => {
+        const filtered = filteredItems.map((el: Character) => {
           return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
         });
         setCharacterList(filtered);
@@ -59,7 +59,7 @@ function CharacterTable() {
     }
   };
   const cancelSearchHandler = () => {
-    const allCharacterList = characters.map((el: ICharacter) => {
+    const allCharacterList = characters.map((el: Character) => {
       return <CharacterItem key={Math.random().toFixed(10)} item={el} />;
     });
     setCharacterList(allCharacterList);

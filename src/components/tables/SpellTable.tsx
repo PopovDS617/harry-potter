@@ -6,7 +6,7 @@ import SpellItem from './SpellItem';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import useTheme from '../../hooks/use-theme';
 import SearchBar from '../input/SearchBar';
-import { ISpell } from '../../models/data-models';
+import { Spell } from '../../models/data-models';
 import { tableSearch } from '../../utils/table-search';
 import NothingFound from './NothingFound';
 import ErrorMessage from './ErrorMessage';
@@ -25,7 +25,7 @@ const SpellTable = () => {
 
   useEffect(() => {
     if (spells.length) {
-      const allSpellsList = spells.map((el: ISpell) => {
+      const allSpellsList = spells.map((el: Spell) => {
         return <SpellItem key={Math.random().toFixed(10)} item={el} />;
       });
       setSpellList(allSpellsList);
@@ -39,7 +39,7 @@ const SpellTable = () => {
   const searchHandler = (text: string) => {
     setSearchText(text);
     if (searchText.length < 2) {
-      const allSpellsList = spells.map((el: ISpell) => {
+      const allSpellsList = spells.map((el: Spell) => {
         return <SpellItem key={Math.random().toFixed(10)} item={el} />;
       });
       setSpellList(allSpellsList);
@@ -49,7 +49,7 @@ const SpellTable = () => {
       const spellsKeys = ['incantation', 'name', 'effct', 'type'];
       let filteredItems = tableSearch(searchText, spells, spellsKeys);
       if (filteredItems.length) {
-        const filtered = filteredItems.map((el: ISpell) => {
+        const filtered = filteredItems.map((el: Spell) => {
           return <SpellItem key={Math.random().toFixed(10)} item={el} />;
         });
         setSpellList(filtered);
@@ -57,7 +57,7 @@ const SpellTable = () => {
     }
   };
   const cancelSearchHandler = () => {
-    const allSpellsList = spells.map((el: ISpell) => {
+    const allSpellsList = spells.map((el: Spell) => {
       return <SpellItem key={Math.random().toFixed(10)} item={el} />;
     });
     setSpellList(allSpellsList);
